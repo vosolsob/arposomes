@@ -283,14 +283,18 @@ lrtest(m1)
 ```r
 fig5ad <- read.table("Fig5ad",header = T)
 
-m1 <- glm(data=fig5ad,round(autophagosomes)~variant,family = poisson)
+# Counts were normalized by scanning areas (~ divided approx. by 2), thus the
+# multiplication by 2 was necessary to prevent the loss of complexity in data
+# after rounding (to get discrete values for Poisson model).
+m1 <- glm(data=fig5ad,round(2*autophagosomes)~variant,family = poisson)
 anova(m1,test="LRT")
 
-m1 <- glm(data=fig5ad,round(arposomes)~variant,family = poisson)
+m1 <- glm(data=fig5ad,round(2*arposomes)~variant,family = poisson)
 anova(m1,test="LRT")
 
-m1 <- glm(data=fig5ad,round(colocalization)~variant,family = poisson)
+m1 <- glm(data=fig5ad,round(2*colocalization)~variant,family = poisson)
 anova(m1,test="LRT")
+
 
 boot.p(fig5ad,"autophagosomes","variant")
 boot.p(fig5ad,"arposomes","variant")
