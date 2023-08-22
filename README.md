@@ -10,10 +10,6 @@ output:
     df_print: paged
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-setwd("/media/Home/home/standa/Plocha/Mumínek/Kolokalizace/Nature")
-```
 
 # ARP2/3 complex associates with peroxisomes to participate in pexophagy in plants
 
