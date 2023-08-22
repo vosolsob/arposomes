@@ -190,6 +190,10 @@ figS4e <- read.table("FigS4e",header = T)
 
 m1 <- betareg(data=figS4e,I(percarea/100)~variant)
 lrtest(m1)
+
+em1 <- emmeans(m1,pairwise~variant,type="response")
+summary(em1)
+plot(em1,type="response",comparisons = T)
 ```
 
 # Figure 5a-d
