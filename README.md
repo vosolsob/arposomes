@@ -39,7 +39,12 @@ library(emmeans) # for multiple comparison
 ```{r}
 fig2b <- read.table("Fig2b",header = T)
 
-anova(lm(data=fig2b,speed~variant))
+m0 <- lm(data=fig2b,speed~variant)
+anova(m0)
+
+em1 <- emmeans(m0,pairwise~variant,type="response")
+summary(em1)
+plot(em1,type="response",comparisons = T)
 ```
 
 # Figure 3e
